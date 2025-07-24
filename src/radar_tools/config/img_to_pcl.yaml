@@ -1,0 +1,10 @@
+radar_img_to_pcl:
+  ros__parameters:
+    cut_intensity_min: 0.3
+    cut_intensity_max: 1.0
+    cut_range_min: 0.0
+    cut_range_max: 150.0
+
+    model_range_min: -0.4
+    model_range_max: 150.0
+

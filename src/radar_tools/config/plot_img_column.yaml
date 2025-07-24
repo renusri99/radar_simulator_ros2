@@ -1,0 +1,8 @@
+plot_img_column_real:
+  ros__parameters:
+    col: 0
+
+plot_img_column_sim:
+  ros__parameters:
+    col: 0
+

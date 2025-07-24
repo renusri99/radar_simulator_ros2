@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.82.7</authoring_tool>
+    </contributor>
+    <created>2021-11-25T10:27:08</created>
+    <modified>2021-11-25T10:27:08</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+
+  <library_effects>
+    <effect id="Material_001-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.8 0.8 0.8 1</color>
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="Material-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <diffuse>
+              <color>0.8 0.8 0.8 1</color>
+            </diffuse>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+
+  <library_materials>
+    <material id="Material_001-material" name="Material.001">
+      <instance_effect url="#Material_001-effect"/>
+    </material>
+    <material id="Material-material" name="Material">
+      <instance_effect url="#Material-effect"/>
+    </material>
+  </library_materials>
+
+  <library_geometries>
+    <geometry id="Cube_001-mesh" name="Cube.001">
+      <mesh>
+        <source id="Cube_001-positions">
+          <float_array id="Cube_001-positions-array" count="24">
+            1 1 1  1 1 -1  1 -1 1  1 -1 -1
+            -1 1 1  -1 1 -1  -1 -1 1  -1 -1 -1
+          </float_array>
+          <technique_common>
+            <accessor source="#Cube_001-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_001-vertices">
+          <input semantic="POSITION" source="#Cube_001-positions"/>
+        </vertices>
+        <triangles material="Material_001-material" count="12">
+          <input semantic="VERTEX" source="#Cube_001-vertices" offset="0"/>
+          <p>0 1 2 2 1 3 4 5 6 6 5 7 0 2 4 4 2 6 1 5 3 3 5 7 0 4 1 1 4 5 2 3 6 6 3 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+
+    <geometry id="Cube-mesh" name="Cube">
+      <mesh>
+        <source id="Cube-positions">
+          <float_array id="Cube-positions-array" count="24">
+            1 1 1  1 1 -1  1 -1 1  1 -1 -1
+            -1 1 1  -1 1 -1  -1 -1 1  -1 -1 -1
+          </float_array>
+          <technique_common>
+            <accessor source="#Cube-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube-vertices">
+          <input semantic="POSITION" source="#Cube-positions"/>
+        </vertices>
+        <triangles material="Material-material" count="12">
+          <input semantic="VERTEX" source="#Cube-vertices" offset="0"/>
+          <p>0 1 2 2 1 3 4 5 6 6 5 7 0 2 4 4 2 6 1 5 3 3 5 7 0 4 1 1 4 5 2 3 6 6 3 7</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="Cube_001" name="Cube.001">
+        <!-- Pure translation (no scaling or rotation) -->
+        <matrix sid="transform">
+          1 0 0 5.0
+          0 1 0 3.5
+          0 0 1 1.0
+          0 0 0 1
+        </matrix>
+        <instance_geometry url="#Cube_001-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material_001-material" target="#Material_001-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+
+      <node id="Cube" name="Cube">
+        <!-- Second cube at a different location -->
+        <matrix sid="transform">
+          1 0 0 8.0
+          0 1 0 4.0
+          0 0 1 2.0
+          0 0 0 1
+        </matrix>
+        <instance_geometry url="#Cube-mesh">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Material-material" target="#Material-material"/>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
+

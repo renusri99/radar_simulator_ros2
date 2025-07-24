@@ -1,0 +1,13 @@
+radar_img_to_pcl:
+  ros__parameters:
+    radar.phi.min: -3.14159265359
+    radar.phi.N:   400
+    radar.phi.inc: 0.015707963267948967
+
+    radar.theta.min: 0.0
+    radar.theta.N:   1
+    radar.theta.inc: 0.0
+
+    radar.range.min: -0.4
+    radar.range.N:   3424
+    radar.range.inc: 0.04380841121495327

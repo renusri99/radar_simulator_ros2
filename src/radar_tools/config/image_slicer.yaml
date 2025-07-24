@@ -1,0 +1,14 @@
+image_slicer_navtech:
+  ros__parameters:
+    col_min: 100
+    col_max: 500
+    row_min: 50
+    row_max: 400
+
+image_slicer_sim:
+  ros__parameters:
+    col_min: 20
+    col_max: 300
+    row_min: 10
+    row_max: 250
+
