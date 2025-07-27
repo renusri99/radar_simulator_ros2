@@ -1,0 +1,80 @@
+mimo_radar_simulator:
+    map_frame: "map"
+    sensor_frame: "radar_sensor"
+
+radar_cpu_node:
+  ros__parameters:
+    num_tx: 4
+    num_rx: 8
+    n_cells: 512
+    resolution: 0.05
+    signal_max: 255.0
+    energy_max: 1.0
+    n_reflections: 2
+    record_multi_path: true
+
+radar_gpu_node:
+  ros__parameters:
+    num_tx: 4
+    num_rx: 8
+    n_cells: 512
+    resolution: 0.05
+    signal_max: 255.0
+    energy_max: 1.0
+    n_reflections: 2
+    record_multi_path: true
+
+/**:
+  ros__parameters:
+
+    # --- Radar Model Parameters ---
+    beam_width: 8.0          # degrees
+    n_samples: 200
+    n_reflections: 2
+    resolution: 0.05         # meters per cell
+    n_cells: 512
+    num_tx: 4
+    num_rx: 8
+    signal_max: 255.0
+    energy_max: 1.0
+
+    # --- Material Configuration ---
+    material_id_air: 0
+
+    object_materials: [
+      1, 3, 1, 2, 3, 3, 2, 2, 3, 3, 2, 2, 4, 2, 4, 2, 4, 1
+    ]
+
+    materials: ["air", "wall", "wood", "glass", "metal"]
+
+    material_properties:
+      air:
+        velocity: 0.3
+        ambient: 1.0
+        diffuse: 0.0
+        specular: 1.0
+
+      wall:
+        velocity: 0.0
+        ambient: 1.0
+        diffuse: 0.0
+        specular: 3000.0
+
+      wood:
+        velocity: 0.0
+        ambient: 1.0
+        diffuse: 0.0
+        specular: 1.0
+
+      glass:
+        velocity: 0.03
+        ambient: 1.0
+        diffuse: 0.0
+        specular: 100.0
+
+      metal:
+        velocity: 0.0
+        ambient: 1.0
+        diffuse: 0.0
+        specular: 1.0
+

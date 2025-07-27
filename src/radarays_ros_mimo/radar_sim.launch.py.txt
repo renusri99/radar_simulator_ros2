@@ -1,0 +1,31 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+import os
+from ament_index_python.packages import get_package_share_directory
+
+def generate_launch_description():
+    radarays_dir = get_package_share_directory('radarays_ros')
+    param_file = os.path.join(radarays_dir, 'config', 'params.yaml')
+
+    return LaunchDescription([
+        Node(
+            package='radarays_ros',
+            executable='radar_cpu_node',
+            name='radar_cpu_node',
+            output='screen',
+            parameters=[param_file],
+            namespace='cpu'
+        ),
+        Node(
+            package='radarays_ros',
+            executable='radar_gpu_node',
+            name='radar_gpu_node',
+            output='screen',
+            parameters=[param_file],
+            namespace='gpu'
+        )
+    ])
+
+
+
+ros2 launch radarays_ros radar_sim.launch.py

@@ -1,0 +1,15 @@
+// Get the first ray's hit point and compute manual distance
+auto& pt = result.points[0];
+
+// LiDAR origin is (2, 0, 0)
+float dx = pt.x - 2.0f;
+float dy = pt.y - 0.0f;
+float dz = pt.z - 0.0f;
+float manual_dist = std::sqrt(dx * dx + dy * dy + dz * dz);
+
+std::cout << "Hit point: x=" << pt.x
+          << ", y=" << pt.y
+          << ", z=" << pt.z << std::endl;
+
+std::cout << "Manual distance: " << manual_dist << std::endl;
+std::cout << "Rmagine range value: " << result.ranges[0] << std::endl;

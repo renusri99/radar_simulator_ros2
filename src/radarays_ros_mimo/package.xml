@@ -1,0 +1,39 @@
+<?<?xml version="1.0"?>
+<package format="3">
+  <name>radarays_ros</name>
+  <version>1.0.1</version>
+  <description>Raytracing-based MIMO radar simulation in ROS2.</description>
+
+  <maintainer email="amock@uos.de">Alexander Mock</maintainer>
+  <license>BSD</license>
+  <author email="amock@uos.de">Alexander Mock</author>
+
+  <!-- Build tool -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Core dependencies -->
+  <depend>rclcpp</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>image_transport</depend>
+  <depend>cv_bridge</depend>
+  <depend>OpenCV</depend>
+
+  <!-- Messaging support -->
+  <depend>rosidl_default_generators</depend>
+  <depend>rosidl_default_runtime</depend>
+  <depend>action_msgs</depend>
+  <depend>builtin_interfaces</depend>
+
+  <!-- rmagine and other libs -->
+  <depend>rmagine</depend>
+
+  <!-- If mesh_msgs is still needed in ROS2 -->
+  <depend>mesh_msgs</depend>
+
+  <!-- Install interfaces -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

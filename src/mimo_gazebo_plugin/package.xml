@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>mimo_radar_gazebo_plugins</name>
+  <version>1.0.0</version>
+  <description>The MIMO Radar Ignition Gazebo Plugin Package</description>
+
+  <!-- Maintainer Information -->
+  <maintainer email="amock@uos.de">Alexander Mock</maintainer>
+  <license>MIT</license>
+
+  <!-- Dependencies for ROS2 + Ignition Gazebo -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <build_depend>rclcpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>OpenCV</build_depend>
+  <build_depend>ignition-gazebo5</build_depend>
+  <build_depend>ignition-transport9</build_depend>
+  <build_depend>ignition-msgs5</build_depend>
+  <build_depend>ignition-common3</build_depend>
+  <build_depend>rmagine</build_depend>
+
+  <exec_depend>rclcpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>OpenCV</exec_depend>
+  <exec_depend>ignition-gazebo5</exec_depend>
+  <exec_depend>ignition-transport9</exec_depend>
+  <exec_depend>ignition-msgs5</exec_depend>
+  <exec_depend>ignition-common3</exec_depend>
+  <exec_depend>rmagine</exec_depend>
+
+  <!-- Export Dependencies for ROS2 -->
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+
+</package>

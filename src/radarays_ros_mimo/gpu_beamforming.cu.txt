@@ -1,0 +1,40 @@
+// gpu_beamforming.cu
+#include <cuda_runtime.h>
+#include <thrust/complex.h>
+
+extern "C" __global__ void beamform_kernel(
+    const float* __restrict__ image,   // [rows * cols]
+    const thrust::complex<float>* __restrict__ weights, // [cols]
+    int rows,
+    int cols,
+    float* __restrict__ output         // [rows]
+) {
+    int r = blockIdx.x * blockDim.x + threadIdx.x;
+    if (r >= rows) return;
+
+    thrust::complex<float> sum(0.0f, 0.0f);
+    for (int c = 0; c < cols; ++c) {
+        float val = image[r * cols + c];
+        sum += thrust::complex<float>(val, 0.0f) * weights[c];
+    }
+    output[r] = thrust::abs(sum);
+}
+
+extern "C" void beamform_cuda(
+    const rm::Memory<float, rm::VRAM_CUDA>& image,
+    const rm::Memory<thrust::complex<float>, rm::UNIFIED_CUDA>& weights,
+    int rows,
+    int cols,
+    rm::Memory<float, rm::UNIFIED_CUDA>& output
+) {
+    int threads = 256;
+    int blocks = (rows + threads - 1) / threads;
+    beamform_kernel<<<blocks, threads>>>(
+        image.raw(),
+        weights.raw(),
+        rows,
+        cols,
+        output.raw()
+    );
+    cudaDeviceSynchronize();
+}

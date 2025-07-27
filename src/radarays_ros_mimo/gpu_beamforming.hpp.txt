@@ -1,0 +1,13 @@
+#pragma once
+
+#include <rmagine/types/Memory.hpp>
+#include <thrust/complex.h>
+
+void beamform_cuda(
+    const rm::Memory<float, rm::VRAM_CUDA>& image,
+    const rm::Memory<thrust::complex<float>, rm::UNIFIED_CUDA>& weights,
+    int rows,
+    int cols,
+    rm::Memory<float, rm::UNIFIED_CUDA>& output
+);
+

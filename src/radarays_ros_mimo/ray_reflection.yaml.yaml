@@ -1,0 +1,15 @@
+ray_yaw: 0.0                    # Ray yaw angle (degrees)
+n_reflections: 2               # Max number of reflections per ray
+spinning: false                # Spin around Z-axis
+energy: false                  # Transparency by energy
+
+# Cone sampling settings
+cone_sampling: true
+cone_width: 1.8                # Cone width (degrees)
+cone_samples: 10               # Number of samples in cone
+cone_sample_dist: 0           # 0: uniform, 1: uniform approx, 2: normal, 3: normal approx
+cone_sample_dist_normal_p_in_cone: 0.95
+
+# Shoot all directions in 360 degrees
+shoot_all_directions: false
+yaw_increment: 0.1             # Increment (degrees) per spin step

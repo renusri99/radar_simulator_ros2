@@ -1,0 +1,51 @@
+from launch import LaunchDescription
+from launch_ros.actions import Node
+from ament_index_python.packages import get_package_share_directory
+import os
+
+def generate_launch_description():
+
+    radarays_dir = get_package_share_directory('radarays_ros')
+    radar_tools_dir = get_package_share_directory('radar_tools')
+
+    meshfile = os.path.join(
+        '/home/amock/datasets/oru/husky/2022-12-05/media/meshes/oru4.dae'
+    )
+
+    oru4_config = os.path.join(radarays_dir, 'config', 'oru4_test.yaml')
+    radar_model_config = os.path.join(radarays_dir, 'config', 'radar_model.yaml')
+    navtech_config = os.path.join(radar_tools_dir, 'config', 'navtech.yaml')
+
+    return LaunchDescription([
+
+        # Radar simulator node (CPU or GPU depending on build)
+        Node(
+            package='radarays_ros',
+            executable='radar_simulator',
+            name='radar_simulator',
+            output='screen',
+            parameters=[
+                {'map_file': meshfile},
+                {'map_frame': 'map'},
+                {'sensor_frame': 'navtech'},
+                oru4_config,
+                radar_model_config
+            ]
+        ),
+
+        # Radar simulated image to PCL node
+        Node(
+            package='radar_tools',
+            executable='radar_img_to_pcl',
+            name='radar_img_to_pcl_sim',
+            output='screen',
+            parameters=[
+                {'frame': 'navtech'},
+                navtech_config
+            ],
+            remappings=[
+                ('radar_image', '/radar/image')
+            ]
+        )
+
+    ])

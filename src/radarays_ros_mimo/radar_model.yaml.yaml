@@ -1,0 +1,46 @@
+radar_simulator:
+  ros__parameters:
+    z_offset: 0.0
+    range_min: 0.0
+    range_max: 600.0
+    beam_width: 8.0       # degrees
+    resolution: 0.0438
+    n_cells: 3424
+
+    n_samples: 10
+    beam_sample_dist: 2
+    beam_sample_dist_normal_p_in_cone: 0.8
+
+    n_reflections: 4
+
+    energy_min: 0.0
+    energy_max: 0.5
+    signal_max: 120.0
+
+    # Signal Denoising
+    signal_denoising: 1
+    signal_denoising_triangular_width: 50
+    signal_denoising_triangular_mode: 0.35
+    signal_denoising_gaussian_width: 50
+    signal_denoising_gaussian_mode: 0.5
+    signal_denoising_mb_width: 50
+    signal_denoising_mb_mode: 0.4
+
+    # Ambient Noise
+    ambient_noise: 2
+    ambient_noise_at_signal_0: 0.3
+    ambient_noise_at_signal_1: 0.03
+    ambient_noise_energy_max: 0.5
+    ambient_noise_energy_min: 0.1
+    ambient_noise_energy_loss: 0.05
+    ambient_noise_uniform_max: 0.15
+    ambient_noise_perlin_scale_low: 0.05
+    ambient_noise_perlin_scale_high: 0.2
+    ambient_noise_perlin_p_low: 0.9
+
+    # Debugging / Behavior
+    scroll_image: 0
+    multipath_threshold: 0.5
+    record_multi_reflection: true
+    record_multi_path: false
+    include_motion: true

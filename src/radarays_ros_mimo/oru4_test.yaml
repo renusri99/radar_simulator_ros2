@@ -1,0 +1,100 @@
+# -----------------------------------------------------------------------------
+# Radar Simulation Configuration - Fixed MIMO Layout
+# -----------------------------------------------------------------------------
+
+# -----------------------------
+# MATERIAL DEFINITIONS
+# -----------------------------
+materials:
+  # 0 - Air
+  - velocity: 0.3
+    ambient: 1.0
+    diffuse: 0.0
+    specular: 1.0
+
+  # 1 - Wall / Stone
+  - velocity: 0.0
+    ambient: 1.0
+    diffuse: 0.0
+    specular: 3000.0
+
+  # 2 - Shelf / Wood
+  - velocity: 0.0
+    ambient: 1.0
+    diffuse: 0.0
+    specular: 1.0
+
+  # 3 - Glass / Window
+  - velocity: 0.03
+    ambient: 1.0
+    diffuse: 0.0
+    specular: 100.0
+
+  # 4 - Metal
+  - velocity: 0.0
+    ambient: 1.0
+    diffuse: 0.0
+    specular: 1.0
+
+# -----------------------------
+# MATERIAL MAPPING
+# -----------------------------
+material_id_air: 0
+
+object_materials: [
+  1, #  0: HallwayGround-mesh
+  3, #  1: DoorHallway1Glass-mesh
+  1, #  2: HallwayWall-mesh
+  2, #  3: DoorT1203Wood-mesh
+  3, #  4: DoorT1203Glass-mesh
+  3, #  5: DoorT1210Glass-mesh
+  2, #  6: DoorT1210Wood-mesh
+  2, #  7: DoorFikaWood-mesh
+  3, #  8: DoorFikaGlass-mesh
+  3, #  9: DoorLabGlass-mesh
+  2, # 10: Bookshelf2-mesh
+  2, # 11: Bookshelf-mesh
+  4, # 12: Locker-mesh
+  2, # 13: Workbench2-mesh
+  4, # 14: Locker2-mesh
+  2, # 15: Workbench-mesh
+  4, # 16: Trash-mesh
+  1  # 17: Building-mesh
+]
+
+# -----------------------------
+# RADAR FIXED MIMO CONFIGURATION
+# -----------------------------
+
+# Resolution of radar bins [meters]
+resolution: 0.05
+
+# Number of signal reflections to simulate (including multi-path)
+n_reflections: 2
+
+# Beam width per direction (degrees → radians in code)
+beam_width: 10.0
+
+# Number of rays per beam direction
+n_samples: 200
+
+# Disable scrolling motion (fixed sensor layout)
+include_motion: false
+
+# Signal denoising settings (0=off, 1=tri, 2=gauss, 3=maxwell)
+signal_denoising: 1
+signal_denoising_triangular_width: 3
+signal_denoising_triangular_mode: 2
+
+# Multipath reflection thresholds
+record_multi_path: true
+record_multi_reflection: true
+multipath_threshold: 0.8
+
+# Ambient noise config (type: 0=off, 1=uniform, 2=perlin)
+ambient_noise: 2
+ambient_noise_energy_max: 0.2
+ambient_noise_energy_min: 0.01
+ambient_noise_energy_loss: 0.05
+ambient_noise_at_signal_0: 0.3
+ambient_noise_at_signal_1: 0.01
